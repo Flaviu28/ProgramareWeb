@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Tracker de Antrenamente</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+    <center>
+        <h1 title="Aplicatie web pentru monitorizarea antrenamentelor">Tracker de Antrenamente</h1>
+        <img src="antrenament.jpg"
+             width="714" height="475" alt="antrenament sala" title="Antrenament la sala">
+    </center>
+
+    <div align="center">
+        <p>
+            Aceasta aplicatie web <strong>Tracker de Antrenamente</strong> permite utilizatorilor sa isi
+            <b>monitorizeze progresul</b>, sa isi planifice antrenamentele si sa urmareasca rezultatele obtinute.
+            <br>
+            Prin aceasta aplicatie utilizatorii pot introduce exercitii, greutati si durata antrenamentelor.
+        </p>
+    </div>
+
+    <h2>Functionalitati principale</h2>
+
+    <ul type="square">
+        <li>Adaugarea exercitiilor zilnice</li>
+        <li>Monitorizarea greutatilor folosite</li>
+        <li>Vizualizarea istoricului antrenamentelor</li>
+    </ul>
+
+    <h3>Pasii pentru utilizarea aplicatiei</h3>
+
+    <ol start="1">
+        <li>Crearea unui cont</li>
+        <li>Introducerea antrenamentului</li>
+        <li>Urmarirea progresului</li>
+    </ol>
+
+    <h2>Exemple de antrenamente</h2>
+
+    <table border="1" width="600">
+        <tr bgcolor="LIGHTBLUE">
+            <th>Exercitiu</th>
+            <th>Repetari</th>
+            <th>Greutate</th>
+        </tr>
+
+        <tr align="center" valign="middle">
+            <td>Genuflexiuni</td>
+            <td>12</td>
+            <td>60 kg</td>
+        </tr>
+
+        <tr align="center" valign="middle">
+            <td>Impins la piept</td>
+            <td>10</td>
+            <td>50 kg</td>
+        </tr>
+
+        <tr align="center" valign="middle">
+            <td>Ramat cu gantera</td>
+            <td>8</td>
+            <td>30 kg</td>
+        </tr>
+
+        <tr>
+            <td colspan="3" align="center">Program de baza pentru incepatori</td>
+        </tr>
+    </table>
+
+    <br>
+
+    <h2>Formular pentru introducerea antrenamentului</h2>
+
+    <form name="formular_antrenament">
+
+        <fieldset>
+            <legend>Detalii antrenament</legend>
+
+            <p>
+                Nume exercitiu:
+                <input type="text" name="exercitiu" size="20" maxlength="30">
+            </p>
+
+            <p>
+                Durata antrenament (minute):
+                <input type="number" name="durata" max="180" step="5" value="30">
+            </p>
+
+            <p>
+                Tip antrenament:
+                <select name="tip">
+                    <option value="forta" selected>Forta</option>
+                    <option value="cardio">Cardio</option>
+                    <option value="mobilitate">Mobilitate</option>
+                </select>
+            </p>
+
+            <p>
+                Nivel dificultate:
+                <select name="nivel" multiple size="2">
+                    <option selected>Incepator</option>
+                    <option>Intermediar</option>
+                    <option>Avansat</option>
+                </select>
+            </p>
+
+            <p>
+                Exercitiu preferat:
+                <input type="checkbox" name="preferat" checked>
+            </p>
+
+            <p>
+                Observatii:
+                <br>
+                <textarea name="comentarii" cols="40" rows="4"></textarea>
+            </p>
+
+            <p>
+                <input type="text" value="Camp readonly" readonly>
+            </p>
+
+            <p>
+                <input type="text" value="Camp dezactivat" disabled>
+            </p>
+
+            <p>
+                <input type="submit" value="Trimite">
+                <input type="reset" value="Reseteaza">
+            </p>
+
+        </fieldset>
+
+    </form>
+
+    <br>
+
+    <p>
+        Mai multe informatii despre fitness gasiti pe
+        <a href="https://www.myprotein.ro/" target="_blank" name="linkfitness">
+            acest site de fitness
+        </a>.
+    </p>
+
+</body>
+</html>
