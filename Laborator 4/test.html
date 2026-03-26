@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Catalog Filme</title>
+</head>
+
+<body>
+
+    <center>
+        <h1>Aplicatie Catalog Filme</h1>
+        <h2>Gestioneaza colectia ta de filme</h2>
+    </center>
+
+    <p align="center">
+        Foloseste acest formular pentru a <strong>adauga</strong> filme,
+        <b>gestiona</b> colectia si <em>vizualiza</em> informatii.
+    </p>
+
+    <center>
+        <img src="film.jpg" alt="Imagine film" width="700" height="390" title="Catalog Filme">
+    </center>
+
+    <div style="height:50px; text-align:center;">
+        <span>Informatii suplimentare</span>
+    </div>
+
+    <hr>
+
+    <center>
+        <a href="#formular">Mergi la formular</a>
+    </center>
+
+    <hr>
+
+    <a name="formular"></a>
+    
+        <form id="formularFilm">
+            <fieldset style="width:400px;">
+                <legend>Adauga film</legend>
+
+                Titlu:<br>
+                <input type="text" id="titlu" name="titlu" maxlength="50" size="30" placeholder="Introdu titlul">
+                <br><br>
+
+                Regizor:<br>
+                <input type="text" id="regizor" name="regizor">
+                <br><br>
+
+                An:<br>
+                <input type="number" id="an" name="an" min="1900" max="2026" step="1" value="2020">
+                <br><br>
+
+                Rating:<br>
+                <input type="number" id="rating" min="0" max="10" step="0.1" value="8">
+                <br><br>
+
+                Gen:<br>
+                <select id="gen" multiple>
+                    <option selected>Actiune</option>
+                    <option>Comedie</option>
+                    <option>Drama</option>
+                    <option>Horror</option>
+                    <option>SF</option>
+               </select>
+               <br><br>
+
+                Status:
+               <input type="checkbox" checked> Vizionat
+               <input type="checkbox"> Favorit
+               <input type="checkbox" disabled> Indisponibil
+               <br><br>
+
+                Format:
+               <input type="radio" name="format"> DVD
+               <input type="radio" name="format"> Blu-ray
+               <br><br>
+
+               <textarea readonly cols="40" rows="3">Film de adaugat in catalog.
+               </textarea>
+               <br><br>
+
+               <input type="submit" value="Trimite">
+               <input type="reset" value="Reseteaza">
+
+           </fieldset>
+       </form>
+
+    <hr>
+
+    <table border="1" width="70%" bgcolor="#cccccc" align="center" valign="center">
+        <thead>
+            <tr>
+                <th>Titlu</th>
+                <th>Regizor</th>
+                <th>An</th>
+                <th>Rating</th>
+            </tr>
+        </thead>
+
+        <tbody id="tabelFilme">
+            <tr>
+                <td>Inception</td>
+                <td rowspan="2">Christopher Nolan</td>
+                <td>2010</td>
+                <td>9</td>
+            </tr>
+            <tr>
+                <td>Interstellar</td>
+                <td>2014</td>
+                <td>9</td>
+            </tr>
+            <tr>
+                <td>Avatar</td>
+                <td>James Cameron</td>
+                <td>2009</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>Joker</td>
+                <td>Todd Phillips</td>
+                <td>2019</td>
+                <td>8</td>
+            </tr>
+        </tbody>
+
+        <tfoot>
+            <tr id="totalRow">
+                <td colspan="4" align="center">Total filme: 4</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <hr>
+
+    <h3>Pasii adaugarii</h3>
+    <ol start="1" type="I">
+        <li>Completeaza titlul</li>
+        <li>Selecteaza anul</li>
+        <li>Alege genul</li>
+        <li>Trimite formularul</li>
+    </ol>
+
+    <h3>Genuri</h3>
+    <ul>
+        <li>Actiune</li>
+        <li>Comedie</li>
+        <li>Drama</li>
+        <li>Horror</li>
+        <li>SF</li>
+    </ul>
+
+    <hr>
+
+    <a href="https://www.imdb.com" name="imdb" target="_blank">IMDb</a><br>
+    <a href="https://www.cinemacity.ro/cinemas/baia-mare" name="rt" target="_blank">Cinema Baia Mare</a>
+
+    <hr>
+
+    <script>
+
+var numeCinema = "Cinema City";
+let nrFilme = 4;
+const pretBilet = 35.5;
+
+alert("Cinema: " + numeCinema);
+console.log("Numar filme: " + nrFilme);
+document.write("<p>Pret bilet: " + pretBilet + "</p>");
+
+function calculeazaCostBilete(pretBilet, nrPersoane){
+    if(nrPersoane>5) return pretBilet*nrPersoane*0.8;
+    return pretBilet*nrPersoane;
+}
+
+var calculeazaRatingMediu = function(a,b,c){
+    return ((a+b+c)/3).toFixed(1);
+};
+
+const formateazaInfo = (t,a,r)=>{
+    return t+" ("+a+") - Rating: "+r+"/10";
+};
+
+let costGrup = calculeazaCostBilete(35.5,7);
+let costNormal = calculeazaCostBilete(35.5,3);
+
+let ratingMediu = calculeazaRatingMediu(8.5,7.2,9.0);
+let info = formateazaInfo("Inception",2010,ratingMediu);
+
+document.write("<p>"+info+"</p>");
+
+var filme = [
+ {titlu:"Inception",regizor:"Nolan",an:2010,rating:8.8,gen:"SF",vizionat:true},
+ {titlu:"Interstellar",regizor:"Nolan",an:2014,rating:8.6,gen:"SF",vizionat:true},
+ {titlu:"Joker",regizor:"Phillips",an:2019,rating:8.4,gen:"Drama",vizionat:false},
+ {titlu:"Avatar",regizor:"Cameron",an:2009,rating:7.8,gen:"Actiune",vizionat:true},
+ {titlu:"Conjuring",regizor:"Wan",an:2013,rating:7.5,gen:"Horror",vizionat:false},
+ {titlu:"Dark Knight",regizor:"Nolan",an:2008,rating:9.0,gen:"Actiune",vizionat:true}
+];
+
+filme.forEach(f=>{if(f.rating>8) console.log(f.titlu);});
+
+var lista = filme.map(f=>f.titlu+" ("+f.an+") - "+f.rating+"/10");
+var nevizionate = filme.filter(f=>!f.vizionat);
+
+var suma = filme.reduce((t,f)=>t+f.rating,0);
+var medie = suma/filme.length;
+
+var cinema = {
+    nume:"Cinema City",
+    oras:"Cluj",
+    filme:filme,
+
+    afiseazaCatalog:function(){
+        this.filme.forEach(f=>console.log(f));
+    },
+
+    calculeazaRatingMediu:function(){
+        return (this.filme.reduce((t,f)=>t+f.rating,0)/this.filme.length).toFixed(2);
+    },
+
+    cautaFilm:function(t){
+        return this.filme.find(f=>f.titlu===t);
+    },
+
+    filtreazaDupaGen:function(g){
+        return this.filme.filter(f=>f.gen===g);
+    }
+};
+
+cinema.afiseazaCatalog();
+console.log(cinema.calculeazaRatingMediu());
+console.log(cinema.cautaFilm("Inception"));
+console.log(cinema.cautaFilm("X"));
+console.log(cinema.filtreazaDupaGen("SF"));
+
+var form = document.getElementById("formularFilm");
+
+form.addEventListener("submit", function(e){
+    e.preventDefault();
+
+    var titlu = document.getElementById("titlu").value.trim();
+    var regizor = document.getElementById("regizor").value.trim();
+    var an = parseInt(document.getElementById("an").value);
+    var rating = parseFloat(document.getElementById("rating").value);
+    var genSelect = document.getElementById("gen");
+    var genuri = Array.from(genSelect.selectedOptions);
+
+    if(titlu===""){ alert("Titlu gol"); return; }
+    if(an<1900 || an>2026){ alert("An invalid"); return; }
+    if(genuri.length===0){ alert("Alege gen"); return; }
+
+    var filmNou = {
+        titlu:titlu,
+        regizor:regizor,
+        an:an,
+        rating:rating,
+        gen:genuri[0].value,
+        vizionat:false
+    };
+
+    filme.push(filmNou);
+
+    var tr = document.createElement("tr");
+
+    ["titlu","regizor","an","rating"].forEach(c=>{
+        var td=document.createElement("td");
+        td.innerText=filmNou[c];
+        tr.appendChild(td);
+    });
+
+    document.getElementById("tabelFilme").appendChild(tr);
+
+    nrFilme++;
+    document.getElementById("totalRow").innerHTML =
+        '<td colspan="4" align="center">Total filme: '+nrFilme+'</td>';
+
+    alert("Film adaugat");
+    form.reset();
+});
+
+    </script>
+
+</body>
+</html>
