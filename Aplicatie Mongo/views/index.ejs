@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Aplicatie MongoDB - Lista</title>
+</head>
+<body>
+    <h1>Catalog Produse</h1>
+
+    <div>
+        <% if (user) { %>
+            <p>Conectat ca: <strong><%= user.username %></strong> (<%= user.role %>) | <a href="/logout">Deconectare</a></p>
+            <p><a href="/add">➕ Adauga Produs Nou</a></p>
+        <% } else { %>
+            <p><a href="/login">Autentificare</a> | <a href="/register">Creare Cont Nou</a></p>
+        <% } %>
+    </div>
+    <hr>
+
+    <form method="GET" action="/">
+        <input type="text" name="search" placeholder="Cauta dupa nume..." value="<%= search %>">
+        
+        <select name="sort">
+            <option value="">Fara sortare pret</option>
+            <option value="price_asc" <%= sort === 'price_asc' ? 'selected' : '' %>>Pret: Mic -> Mare</option>
+            <option value="price_desc" <%= sort === 'price_desc' ? 'selected' : '' %>>Pret: Mare -> Mic</option>
+        </select>
+        
+        <button type="submit">Aplica filtrele</button>
+        <a href="/">Reseteaza</a>
+    </form>
+
+    <h3>Produse Disponibile:</h3>
+    <ul>
+        <% if (products.length === 0) { %>
+            <li>Nu s-au gasit rezultate</li>
+        <% } %>
+        
+        <% products.forEach(function(product) { %>
+            <li>
+                <a href="/<%= product._id %>"><strong><%= product.name %></strong></a> 
+                - <%= product.price %> RON | Categorie: <%= product.category %> 
+                <br>
+                <small>Adaugat de: <%= product.createdBy ? product.createdBy.username : 'Utilizator Sters' %></small>
+            </li>
+            <br>
+        <% }) %>
+    </ul>
+</body>
+</html>

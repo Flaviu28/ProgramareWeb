@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Adaugare Produs</title>
+</head>
+<body>
+    <h1>Adauga o noua entitate</h1>
+    
+    <% if (error) { %>
+        <div style="background-color: #f8d7da; color: #721c24; padding: 10px; margin-bottom: 15px;">
+            <strong>Eroare validare:</strong> <%= error %>
+        </div>
+    <% } %>
+
+    <form action="/add" method="POST">
+        <div>
+            <label>Nume Produs (Min 1 car.):</label><br>
+            <input type="text" name="name" required>
+        </div><br>
+
+        <div>
+            <label>Pret (RON):</label><br>
+            <input type="number" name="price" required>
+        </div><br>
+
+        <div>
+            <label>Categorie:</label><br>
+            <select name="category">
+                <option value="Electronice">Electronice</option>
+                <option value="Haine">Haine</option>
+                <option value="Carti">Carti</option>
+                <option value="Altele" selected>Altele</option>
+            </select>
+        </div><br>
+
+        <div>
+            <label>Disponibil in stoc:</label>
+            <input type="checkbox" name="inStock" checked>
+        </div><br>
+
+        <button type="submit">Salveaza in MongoDB</button>
+    </form>
+    
+    <br>
+    <a href="/">Anuleaza si inapoi</a>
+</body>
+</html>

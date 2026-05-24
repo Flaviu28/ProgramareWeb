@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalii Produs</title>
+</head>
+<body>
+    <h1>Detalii: <%= product.name %></h1>
+    <hr>
+    <p><strong>Pret:</strong> <%= product.price %> RON</p>
+    <p><strong>Categorie:</strong> <%= product.category %></p>
+    <p><strong>Disponibilitate stoc:</strong> <%= product.inStock ? 'In Stoc' : 'Stoc epuizat' %></p>
+    <p><strong>Proprietar entitate:</strong> <%= product.createdBy ? product.createdBy.username : 'Necunoscut' %> (<%= product.createdBy ? product.createdBy.email : '-' %>)</p>
+    <p><strong>Creat la data:</strong> <%= product.createdAt.toLocaleString('ro-RO') %></p>
+
+    <hr>
+    <% if (user) { %>
+        <a href="/<%= product._id %>/edit">Editeaza Datele</a> | 
+        
+        <form action="/<%= product._id %>/delete" method="POST" style="display: inline;" onsubmit="return confirm('Sigur doresti sa stergi definitiv acest produs?');">
+            <button type="submit" style="color: red;">Sterge Entitatea</button>
+        </form>
+        <br><br>
+    <% } %>
+    
+    <a href="/">⬅️ Inapoi la lista</a>
+</body>
+</html>

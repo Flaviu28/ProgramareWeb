@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Editeaza Produs</title>
+</head>
+<body>
+    <h1>Modifica datele produsului</h1>
+
+    <% if (error) { %>
+        <div style="background-color: #f8d7da; color: #721c24; padding: 10px; margin-bottom: 15px;">
+            <strong>Eroare validare modificari:</strong> <%= error %>
+        </div>
+    <% } %>
+
+    <form action="/<%= product._id %>/edit" method="POST">
+        <div>
+            <label>Nume Produs:</label><br>
+            <input type="text" name="name" value="<%= product.name %>" required>
+        </div><br>
+
+        <div>
+            <label>Pret:</label><br>
+            <input type="number" name="price" value="<%= product.price %>" required>
+        </div><br>
+
+        <div>
+            <label>Categorie:</label><br>
+            <select name="category">
+                <option value="Electronice" <%= product.category === 'Electronice' ? 'selected' : '' %>>Electronice</option>
+                <option value="Haine" <%= product.category === 'Haine' ? 'selected' : '' %>>Haine</option>
+                <option value="Carti" <%= product.category === 'Carti' ? 'selected' : '' %>>Carti</option>
+                <option value="Altele" <%= product.category === 'Altele' ? 'selected' : '' %>>Altele</option>
+            </select>
+        </div><br>
+
+        <div>
+            <label>Disponibil in stoc:</label>
+            <input type="checkbox" name="inStock" <%= product.inStock ? 'checked' : '' %>>
+        </div><br>
+
+        <button type="submit">Actualizeaza datele</button>
+    </form>
+
+    <br>
+    <a href="/<%= product._id %>">Abandoneaza editarea</a>
+</body>
+</html>
